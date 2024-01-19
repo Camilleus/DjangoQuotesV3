@@ -1,5 +1,5 @@
 from django import forms
-from .models import Author, Quote, Tag, Note
+from .models import Tag, Note
 from django.forms import ModelForm, CharField, TextInput
 
 
@@ -23,17 +23,4 @@ class NoteForm(ModelForm):
         exclude = ['tags']
 
 
-class AuthorForm(forms.ModelForm):
-    class Meta:
-        model = Author
-        fields = ['name']
 
-
-class QuoteForm(forms.ModelForm):
-
-    name = CharField(min_length=5, max_length=50, required=True, widget=TextInput())
-    description = CharField(min_length=10, max_length=150, required=True, widget=TextInput())
-
-    class Meta:
-        model = Quote  
-        fields = ['text', 'author', 'user']

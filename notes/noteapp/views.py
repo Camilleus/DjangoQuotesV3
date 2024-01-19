@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Author, Quote, Note, Tag
-from .forms import AuthorForm, QuoteForm
+from .models import Note, Tag
+from .forms import NoteForm, TagForm
 
 
 def main(request):
-    return render(request, 'noteapp/index.html')
+    notes = Note.objects.all()
+    return render(request, 'noteapp/index.html', {"notes": notes})
+
     
     
 def tag(request):
@@ -44,34 +46,12 @@ def detail(request, note_id):
     return render(request, 'noteapp/detail.html', {"note": note})
 
 
-def author(request):
-    authors = Author.objects.order_by('last_name')
-
-    
-@login_required
-def add_author(request):
-    if request.method == 'POST':
-        form = AuthorForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('authors_list')
-    else:
-        form = AuthorForm()
-    return render(request, 'add_author.html', {'form': form})
+def set_done(request, note_id):
+    Note.objects.filter(pk=note_id).update(done=True)
+    return redirect(to='noteapp:main')
 
 
-def quote(request):
-    queutes = Quote.objects.order_by(quote)
+def delete_note(request, note_id):
+    Note.objects.get(pk=note_id).delete()
+    return redirect(to='noteapp:main')
 
-@login_required
-def add_quote(request):
-    if request.method == 'POST':
-        form = QuoteForm(request.POST)
-        if form.is_valid():
-            quote = form.save(commit=False)
-            quote.user = request.user
-            quote.save()
-            return redirect('quotes_list')
-    else:
-        form = QuoteForm()
-    return render(request, 'add_quote.html', {'form': form})
