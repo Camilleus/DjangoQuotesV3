@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('noteapp.urls')),
     path('tag/', tag, name='tag'),
     path('note/', note, name='note'),
+    path('users/', include('users.urls')),
 ]

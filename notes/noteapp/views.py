@@ -9,7 +9,6 @@ def main(request):
     return render(request, 'noteapp/index.html', {"notes": notes})
 
     
-    
 def tag(request):
     if request.method == 'POST':
         form = TagForm(request.POST)
