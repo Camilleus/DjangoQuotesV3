@@ -3,6 +3,11 @@ from django.contrib.auth.decorators import login_required
 from .models import Author, Quote
 from .forms import AuthorForm, QuoteForm
 
+
+def main(request):
+    return render(request, 'noteapp/index.html')
+    
+    
 @login_required
 def add_author(request):
     if request.method == 'POST':
@@ -13,6 +18,7 @@ def add_author(request):
     else:
         form = AuthorForm()
     return render(request, 'add_author.html', {'form': form})
+
 
 @login_required
 def add_quote(request):
