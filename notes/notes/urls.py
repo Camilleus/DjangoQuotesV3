@@ -21,7 +21,7 @@ from noteapp.views import note, tag
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('noteapp.urls')),
+    path('users/', include('users.urls')),
     path('tag/', tag, name='tag'),
     path('note/', note, name='note'),
-    path('users/', include('users.urls')),
 ]
