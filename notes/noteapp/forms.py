@@ -1,5 +1,5 @@
 from django import forms
-from .models import Author, Quote, Tag
+from .models import Author, Quote, Tag, Note
 from django.forms import ModelForm, CharField, TextInput
 
 
@@ -30,6 +30,10 @@ class AuthorForm(forms.ModelForm):
 
 
 class QuoteForm(forms.ModelForm):
+
+    name = CharField(min_length=5, max_length=50, required=True, widget=TextInput())
+    description = CharField(min_length=10, max_length=150, required=True, widget=TextInput())
+
     class Meta:
-        model = Quote
-        fields = ['text', 'author']
+        model = Quote  
+        fields = ['text', 'author', 'user']

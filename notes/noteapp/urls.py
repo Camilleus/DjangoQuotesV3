@@ -6,4 +6,8 @@ app_name = 'noteapp'
 urlpatterns = [
     path('', views.main, name='main'),
     path('tag/', views.tag, name='tag'),
+    path('note/', views.note, name='note'),
+    path('detail/<int:note_id>', views.detail, name='detail'),
+    path('quote/', views.quote, name='quote'),
+    path('author/', views.author, name='author'),
 ]
