@@ -8,6 +8,18 @@ def main(request):
     return render(request, 'noteapp/index.html')
     
     
+def tag(request):
+    if request.method == 'POST':
+        form = TagForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(to='noteapp:main')
+        else:
+            return render(request, 'noteapp/tag.html', {'form': form})
+
+    return render(request, 'noteapp/tag.html', {'form': TagForm()})
+
+
 @login_required
 def add_author(request):
     if request.method == 'POST':
