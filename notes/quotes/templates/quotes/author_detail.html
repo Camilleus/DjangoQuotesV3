@@ -1,17 +1,11 @@
 {% extends 'noteapp/base.html' %} {% block content %}
-<li>
-  <a href="{% url 'quotes:quote' %}" role="button">Quotes List</a>
-</li>
-<li>
-  <a href="{% url 'quotes:author' %}" role="button">Authors List</a>
-</li>
 <h2>{{ author.name }}</h2>
-<p>Author</p>
-<ul>
-  {% for author in authors %}
-  <li>{{ author.name }}</li>
-  {% endfor %}
-</ul>
+<p>{{ author.description }}</p>
+
+{% if author.image %}
+<img src="{{ author.image.url }}" alt="{{ author.name }} Image" />
+{% endif %}
+
 <ul>
   <li>
     <a href="{% url 'quotes:add_author' %}" role="button">Add New Author</a>
