@@ -9,6 +9,11 @@ tutaj działa, jeszcze nad tym pracuję
 3. Zainstaluj zależności: `poetry install`
 4. Uruchom serwer: `poetry run python manage.py runserver`
 
+## Przyszłe Rozszerzenia
+
+Top Ten Tags
+Ulubione Cytaty
+
 ## Kontrybucje
 
 Czekamy na Twoje pull requesty!```
@@ -18,6 +23,7 @@ Powyższy kod markdown wykorzystuje blok kodu do przedstawienia struktury projek
 ## Struktura Projektu
 
 DjangoQuotesV3
+
 - .gitattributes
 - notes
   - manage.py
@@ -32,7 +38,7 @@ DjangoQuotesV3
     - migrations
       - 0001_initial.py
       - 0002_remove_quote_author_remove_quote_user_note_user_and_more.py
-      - __init__.py
+      - **init**.py
     - models.py
     - static
       - noteapp
@@ -49,20 +55,20 @@ DjangoQuotesV3
     - tests.py
     - urls.py
     - views.py
-    - __init__.py
+    - **init**.py
   - notes
     - asgi.py
     - settings.py
     - urls.py
     - wsgi.py
-    - __init__.py
+    - **init**.py
   - quotes
     - admin.py
     - apps.py
     - forms.py
     - migrations
       - 0001_initial.py
-      - __init__.py
+      - **init**.py
     - models.py
     - templates
       - quotes
@@ -78,14 +84,14 @@ DjangoQuotesV3
     - tests.py
     - urls.py
     - views.py
-    - __init__.py
+    - **init**.py
   - users
     - admin.py
     - apps.py
     - forms.py
     - migrations
       - 0001_initial.py
-      - __init__.py
+      - **init**.py
     - models.py
     - signals.py
     - templates
@@ -96,7 +102,7 @@ DjangoQuotesV3
     - tests.py
     - urls.py
     - views.py
-    - __init__.py
+    - **init**.py
 - poetry.lock
 - pyproject.toml
 - README.md
