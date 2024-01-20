@@ -2,6 +2,21 @@
 
 tutaj działa, jeszcze nad tym pracuję
 
+## Instalacja
+
+1. Sklonuj repozytorium: `git clone https://github.com/twoje-konto/DjangoQuotesV3.git`
+2. Przejdź do folderu projektu: `cd DjangoQuotesV3`
+3. Zainstaluj zależności: `poetry install`
+4. Uruchom serwer: `poetry run python manage.py runserver`
+
+## Kontrybucje
+
+Czekamy na Twoje pull requesty!```
+
+Powyższy kod markdown wykorzystuje blok kodu do przedstawienia struktury projektu w formie drzewa. Dodatkowo, dodano sekcję "Instalacja" i "Kontrybucje" jako przykłady, które można dostosować do swoich potrzeb.
+
+## Struktura Projektu
+
 DjangoQuotesV3
 ├─ .gitattributes
 ├─ notes
