@@ -1,21 +1,5 @@
 {% extends "noteapp/base.html" %} {% block content %}
 
-<h2>Add New Tag</h2>
-
-<form method="POST" action="{% url 'noteapp:tag' %}">
-  {% csrf_token %}
-  <div style="padding: 10px">
-    <label>Enter the tag name: {{form.name}} </label>
-    <span>{{ form.errors.name }}</span>
-  </div>
-  <div class="grid">
-    <button type="submit">Submit</button>
-    <button type="reset" class="secondary">Reset</button>
-  </div>
-</form>
-
-<h2>Search For A Tag</h2>
-
 <form method="POST" action="{% url 'noteapp:tag' %}">
   {% csrf_token %}
   <div style="padding: 10px">
@@ -24,7 +8,7 @@
     <span>{{ form.errors.name }}</span>
   </div>
   <div class="grid">
-    <button type="submit">Search</button>
+    <button type="submit">Submit</button>
     <button type="reset" class="secondary">Reset</button>
   </div>
 </form>
@@ -36,4 +20,7 @@
   <li>{{ note.name }} - {{ note.description }}</li>
   {% endfor %}
 </ul>
+<a href="{% url 'noteapp:notes_by_tag' tag_name=tag_name %}">
+  Search for a Note by Tag
+</a>
 {% endif %} {% endblock %}

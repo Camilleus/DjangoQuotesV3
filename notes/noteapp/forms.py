@@ -4,6 +4,7 @@ from django.forms import ModelForm, CharField, TextInput
 
 
 class TagForm(ModelForm):
+
     name = forms.CharField(min_length=3, max_length=25, required=True, widget=TextInput())
 
     class Meta:
@@ -22,4 +23,9 @@ class NoteForm(ModelForm):
         exclude = ['tags']
 
 
+class YourTagForm(ModelForm):
+    name = forms.CharField(min_length=3, max_length=25, required=True, widget=TextInput())
 
+    class Meta:
+        model = Tag
+        fields = ['name']
