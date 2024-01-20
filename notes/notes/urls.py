@@ -27,4 +27,6 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('tag/', tag, name='tag'),
     path('note/', note, name='note'),
+    path('quotes/', include('quotes.urls')),
+    path('author/', include('author.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
