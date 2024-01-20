@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,6 +22,12 @@
         <ul>
           <li><a href="{% url 'noteapp:note' %}" role="button">Add note</a></li>
           <li><a href="{% url 'noteapp:tag' %}" role="button">Add Tag</a></li>
+          <li>
+            <a href="{% url 'quotes:quote' %}" role="button">Quotes List</a>
+          </li>
+          <li>
+            <a href="{% url 'quotes:author' %}" role="button">Authors List</a>
+          </li>
         </ul>
         <ul>
           <li>Welcome <b>{{ user.username }}!</b></li>

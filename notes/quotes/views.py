@@ -10,9 +10,14 @@ def main(request):
     return render(request, 'quotes/main.html', {'authors': authors, 'quotes': quotes})
 
 
+def author(request):
+    authors = Author.objects.all()
+    return render(request, 'quotes/author.html', {'authors': authors})
+
+
 def author_list(request):
     authors = Author.objects.all()
-    return render(request, 'quotes/author_list.html', {'authors': authors})
+    return render(request, 'quotes/author.html', {'authors': authors})
 
 
 def author_detail(request, author_id):
@@ -33,10 +38,14 @@ def add_author(request):
     return render(request, 'quotes/add_author.html', {'form': form})
 
 
-@login_required
+def quote(request):
+    quotes = Quote.objects.all()
+    return render(request, 'quotes/quote.html', {'quotes': quotes})
+
+
 def quote_list(request):
     quotes = Quote.objects.all()
-    return render(request, 'quotes/quote_list.html', {'quotes': quotes})
+    return render(request, 'quotes/quote.html', {'quotes': quotes})
 
 
 @login_required
@@ -51,7 +60,7 @@ def add_quote(request):
         form = QuoteForm(request.POST)
         if form.is_valid():
             quote = form.save(commit=False)
-            quote.user_profile = request.user.profile  # Dodaj autora notatki na podstawie aktualnie zalogowanego użytkownika
+            quote.user_profile = request.user.profile
             quote.save()
             return redirect('quotes:quote_detail', quote_id=quote.pk)
     else:

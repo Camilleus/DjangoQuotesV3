@@ -1,9 +1,9 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'noteapp/base.html' %} {% block content %}
 <h2>{{ author.name }}</h2>
-<p>Cytaty:</p>
+<p>Author</p>
 <ul>
-  {% for quote in quotes %}
-  <li>{{ quote.text }}</li>
+  {% for author in authors %}
+  <li>{{ author.name }}</li>
   {% endfor %}
 </ul>
 {% endblock %}
