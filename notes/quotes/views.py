@@ -29,7 +29,7 @@ def author_detail(request, author_id):
 @login_required
 def add_author(request):
     if request.method == 'POST':
-        form = AuthorForm(request.POST)
+        form = AuthorForm(request.POST, request.FILES)
         if form.is_valid():
             author = form.save()
             return redirect('quotes:author_detail', author_id=author.pk)

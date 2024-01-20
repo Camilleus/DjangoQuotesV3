@@ -4,10 +4,11 @@ from users.models import Profile
 class Author(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
-    image = models.ImageField(upload_to='author_images/')
+    image = models.ImageField(upload_to='author_images/', blank=True, null=True)
 
     def __str__(self):
         return self.name
+
 
 class Quote(models.Model):
     text = models.TextField()
