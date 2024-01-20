@@ -1,0 +1,8 @@
+{% extends 'noteapp/base.html' %} {% block content %}
+<h2>Notes with Tag: {{ tag.name }}</h2>
+<ul>
+  {% for note in notes %}
+  <li>{{ note.name }} - {{ note.description }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

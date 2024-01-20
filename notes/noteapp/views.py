@@ -11,17 +11,18 @@ def main(request):
 
 @login_required
 def tag(request):
-    if request.method == 'POST':
-        form = TagForm(request.POST)
-        if form.is_valid():
-            tag = form.save(commit=False)
-            tag.user = request.user
-            tag.save()
-            return redirect(to='noteapp:main')
-        else:
-            return render(request, 'noteapp/tag.html', {'form': form})
+    form = TagForm(request.POST or None)
+    tag_name = None
+    notes = None
 
-    return render(request, 'noteapp/tag.html', {'form': TagForm()})
+    if request.method == 'POST' and form.is_valid():
+        tag_name = form.cleaned_data['name']
+        tag = Tag.objects.filter(name=tag_name, user=request.user).first()
+
+        if tag:
+            notes = Note.objects.filter(tags=tag, user=request.user)
+
+    return render(request, 'noteapp/tag.html', {'form': form, 'tag_name': tag_name, 'notes': notes})
 
 
 @login_required
@@ -43,6 +44,12 @@ def note(request):
             return render(request, 'noteapp/note.html', {"tags": tags, 'form': form})
 
     return render(request, 'noteapp/note.html', {"tags": tags, 'form': NoteForm()})
+
+
+def notes_by_tag(request, tag_id):
+    tag = get_object_or_404(Tag, pk=tag_id, user=request.user)
+    notes = Note.objects.filter(tags=tag, user=request.user)
+    return render(request, 'noteapp/notes_by_tag.html', {'tag': tag, 'notes': notes})
 
 
 @login_required
