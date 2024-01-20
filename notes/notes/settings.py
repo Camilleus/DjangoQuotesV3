@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'noteapp',
     'notes',
     'users',
+    'quotes',
 ]
 
 MIDDLEWARE = [
