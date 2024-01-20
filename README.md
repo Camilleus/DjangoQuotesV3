@@ -1,6 +1,6 @@
 # DjangoQuotesV3
 
-tutaj chyba działa, jeszcze nad tym pracuję
+tutaj działa, jeszcze nad tym pracuję
 
 DjangoQuotesV3
 ├─ .gitattributes
