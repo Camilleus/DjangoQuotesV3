@@ -38,6 +38,12 @@
         <ul>
           <li><a href="{% url 'users:signup' %}" role="button">Sign Up</a></li>
           <li><a href="{% url 'users:login' %}" role="button">Login</a></li>
+          <li>
+            <a href="{% url 'quotes:quote' %}" role="button">Quotes List</a>
+          </li>
+          <li>
+            <a href="{% url 'quotes:author' %}" role="button">Authors List</a>
+          </li>
         </ul>
         {% endif %}
       </nav>

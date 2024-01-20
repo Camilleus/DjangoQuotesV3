@@ -1,14 +1,13 @@
 {% extends 'noteapp/base.html' %} {% block content %}
 <h2>Authors</h2>
 <ul>
-  {% for author in authors %}
+  {% for single_author in authors %}
   <li>
-    <a href="{% url 'authors:author_detail' author_id=author.id %}"
-      >{{ author.text }}</a
-    >
+    <a href="{% url 'quotes:author_detail' author_id=single_author.id %}">
+      {{ single_author.name }}
+    </a>
   </li>
   {% endfor %}
 </ul>
-
-<a href="{% url 'authors:add_author' %}">Add New Author</a>
+<a href="{% url 'quotes:add_author' %}">Add New Author</a>
 {% endblock %}

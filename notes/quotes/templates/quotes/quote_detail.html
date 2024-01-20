@@ -2,4 +2,9 @@
 <h2>Quote</h2>
 <p>{{ quote.text }}</p>
 <p>Autor: {{ quote.author }}</p>
+<ul>
+  <li>
+    <a href="{% url 'quotes:add_quote' %}" role="button">Add New Quote</a>
+  </li>
+</ul>
 {% endblock %}

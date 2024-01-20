@@ -17,7 +17,7 @@ def author(request):
 
 def author_list(request):
     authors = Author.objects.all()
-    return render(request, 'quotes/author.html', {'authors': authors})
+    return render(request, 'quotes/author_detail.html', {'author_id': author_id})
 
 
 def author_detail(request, author_id):
