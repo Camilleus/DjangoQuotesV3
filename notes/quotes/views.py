@@ -48,7 +48,6 @@ def quote_list(request):
     return render(request, 'quotes/quote.html', {'quotes': quotes})
 
 
-@login_required
 def quote_detail(request, quote_id):
     quote = get_object_or_404(Quote, pk=quote_id)
     return render(request, 'quotes/quote_detail.html', {'quote': quote})

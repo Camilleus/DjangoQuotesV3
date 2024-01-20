@@ -2,9 +2,10 @@
 <h2>Quote</h2>
 <p>{{ quote.text }}</p>
 <p>Autor: {{ quote.author }}</p>
+{% if user.is_authenticated %}
 <ul>
   <li>
     <a href="{% url 'quotes:add_quote' %}" role="button">Add New Quote</a>
   </li>
 </ul>
-{% endblock %}
+{% endif %} {% endblock %}

@@ -1,5 +1,4 @@
-{% extends 'noteapp/base.html' %} 
-{% block content %}
+{% extends 'noteapp/base.html' %} {% block content %}
 <h2>Quotes</h2>
 <ul>
   {% for quote in quotes %}
@@ -10,6 +9,7 @@
   </li>
   {% endfor %}
 </ul>
-
+{% if user.is_authenticated %}
 <a href="{% url 'quotes:add_quote' %}">Add New Quote</a>
+{% endif %} 
 {% endblock %}

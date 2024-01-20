@@ -4,11 +4,10 @@
 
 {% if author.image %}
 <img src="{{ author.image.url }}" alt="{{ author.name }} Image" />
-{% endif %}
-
+{% endif %} {% if user.is_authenticated %}
 <ul>
   <li>
     <a href="{% url 'quotes:add_author' %}" role="button">Add New Author</a>
   </li>
 </ul>
-{% endblock %}
+{% endif %} {% endblock %}
