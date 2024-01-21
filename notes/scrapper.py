@@ -1,7 +1,16 @@
 import requests
 from bs4 import BeautifulSoup
+import os
+import django
 import json
-import sqlite3
+
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'notes.settings')
+django.setup()
+
+
+from quotes.models import Quote, Author
+from users.models import Profile
 
 def scrape_quotes(url):
     response = requests.get(url)
@@ -23,26 +32,21 @@ def scrape_quotes(url):
 
         return data
 
-def save_to_database(quotes_data, db_name='sqlite3.db'):
-    conn = sqlite3.connect(db_name)
-    c = conn.cursor()
 
-    c.execute('CREATE TABLE IF NOT EXISTS quotes (quote TEXT, author TEXT)')
+def save_quotes_to_database(quotes_data):
+    user_profile, created = Profile.objects.get_or_create(user_id=1)
 
     for quote_info in quotes_data:
         quote_text = quote_info['quote']
         author_name = quote_info['author']
 
-        c.execute('INSERT INTO quotes (quote, author) VALUES (?, ?)', (quote_text, author_name))
+        author, created = Author.objects.get_or_create(name=author_name)
 
-    conn.commit()
-    conn.close()
+        Quote.objects.create(text=quote_text, author=author, user_profile=user_profile)
+
+
 
 if __name__ == "__main__":
     url = "https://quotes.toscrape.com"
     quotes_data = scrape_quotes(url)
-
-    with open('quotes.json', 'w', encoding='utf-8') as json_file:
-        json.dump(quotes_data, json_file, ensure_ascii=False, indent=2)
-
-    save_to_database(quotes_data, 'sqlite3.db')
+    save_quotes_to_database(quotes_data)
