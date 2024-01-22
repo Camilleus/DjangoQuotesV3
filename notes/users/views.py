@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm, LoginForm, ProfileForm
 
 
-def signupuser(request):
+def signup_user(request):
     if request.user.is_authenticated:
         return redirect(to='noteapp:main')
 
@@ -21,7 +21,7 @@ def signupuser(request):
     return render(request, 'users/signup.html', context={"form": RegisterForm()})
 
 
-def loginuser(request):
+def login_user(request):
     if request.user.is_authenticated:
         return redirect(to='noteapp:main')
 
@@ -38,7 +38,7 @@ def loginuser(request):
 
 
 @login_required
-def logoutuser(request):
+def logout_user(request):
     logout(request)
     return redirect(to='noteapp:main')
 
